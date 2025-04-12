@@ -16,4 +16,12 @@ public class StudentRepo {
     public Optional<Student> findStudentById(String id) {
         return Optional.ofNullable(students.get(id));
     }
+
+    public Student findById(String id) throws NoSuchElementException {
+        Student student = students.get(id);
+        if (student == null) {
+            throw new NoSuchElementException("Student with id " + id + " not found");
+        }
+        return student;
+    }
 }
